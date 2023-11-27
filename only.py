@@ -82,23 +82,21 @@ t = Table(name = "test")
 head = ["id", "name", "skin", "elo"]
 t.make_head(head)
 
-values = [
-    ["djsur", "gabe", "!RyalTikbalang", "2000"],
-    ["shcbn", "kurisu", "!KurisuCloud", "900"],
-    ["poxlf", "patryk", "!PatrickSkin", "1500"],
-    ["qsert", "ez", "!ezPrv1", "1900"],
-    ["chxnd", "", "4chan", "600"],
-    ["pftns", "TEWWW V2", "gabe", "200"],
-    ["xxddh", "SU EMA", "obama", "800"],
-    ["qshyz", "KRIS :)", "hook", "1400"],
-    ["djsur", "arab", "!arabMax", "1300"],
-    ["tarze", "SPARTAN", "!JacksonSpartan", "700"]
-]
+# values = []
 
+# for v in values:
+#     t.add_values(v)
 
-for v in values:
-    t.add_values(v)
-
+t.add_values(["djsur", "gabe", "!RyalTikbalang", "2000"])
+t.add_values(["shcbn", "kurisu", "!KurisuCloud", "900"])
+t.add_values(["poxlf", "patryk", "!PatrickSkin", "1500"])
+t.add_values(["qsert", "ez", "!ezPrv1", "1900"])
+t.add_values(["chxnd", "", "4chan", "600"])
+t.add_values(["pftns", "TEWWW V2", "gabe", "200"])
+t.add_values(["xxddh", "SU EMA", "obama", "800"])
+t.add_values(["qshyz", "KRIS :)", "hook", "1400"])
+t.add_values(["djsur", "arab", "!arabMax", "1300"])
+t.add_values(["tarze", "SPARTAN", "!JacksonSpartan", "700"])
 
 print(t)
 print("is empty:", t.is_empty())
