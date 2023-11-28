@@ -16,7 +16,9 @@ class Table:
         self.width = len(self.head)
 
     def __str__(self):
-        st = ""
+        if self.is_empty():
+            return(self.name + " is empty")
+        st = "{}\n".format(self.name)
         m = get_max(self.datas)
         i = 1
         for line in self.datas:
@@ -31,7 +33,7 @@ class Table:
         return st
     
     def is_empty(self):
-        if self.datas == []:
+        if self.datas == [] or len(self.datas) == 1:
             return True
         
         for L in self.datas:
@@ -60,7 +62,7 @@ class Table:
         self.update()
 
     def add_values(self, values:list):
-        if self.is_empty():
+        if len(self.datas) == 0:
             return False
         
         elif values == []:
@@ -72,11 +74,38 @@ class Table:
         self.datas.append(values)
         self.update()
 
+    def find(self, key, match_case = True):
+        if self.is_empty():
+            return None
+        
+        if not match_case:
+            key = key.lower()
 
+        
+        tmp_table = Table("temporary")
+        tmp_table.make_head(self.head)
+        for line in self.datas:
+            for value in line:
 
+                if not match_case:
+                    value = value.lower()
+                if value == key:
+                    if not line == self.datas[0]:
+                        tmp_table.add_values(line)
 
+        return tmp_table
+    
+    def remove_line(self, index):
+        if index == 1:
+            raise IndexError("Can not delete the head of the table")
+        
+        elif index < 1 or index > len(self.datas):
+            raise IndexError("Index out of range")
+        
+        self.datas.pop(index-1)
+        self.update()
 
-import random
+        return self
 
 t = Table(name = "test")
 head = ["id", "name", "skin", "elo"]
